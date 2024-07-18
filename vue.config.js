@@ -1,6 +1,6 @@
 // const { defineConfig } = require('@vue/cli-service')
 //
-//
+//https://www.youtube.com/watch?v=i_XbW-FsLKk
 // module.exports = defineConfig({
 //   transpileDependencies: true,
 // npm run build
