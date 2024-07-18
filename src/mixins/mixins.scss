@@ -1,0 +1,14 @@
+$c-black: #030303;
+$c-white-back: rgba(black, .057);
+$c-orange: #FF541E;
+@mixin container {
+  max-width: 1370px;
+  margin: auto;
+};
+@mixin d-f {
+  display: flex;
+}
+@mixin img-auto{
+  width: 100%;
+  height: auto;
+}

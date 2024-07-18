@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+@c-orange: #FF541E;
+@c-black: #030303;
+@c-text-gray: rgba(@c-black, .6);
+@c-white-back: rgba(black, .057);
+
+.container() {
+  max-width: 1360px;
+  margin: auto;
+}
+
+.img-auto {
+  width: 100%;
+  height: auto;
+
+}
+
+.mobile(@params) {
+  @media (max-width: 550px) {
+    @params();
+  }
+}
+
+
+.tablet(@params) {
+  @media (max-width: 930px) {
+    @params();
+  }
+}
+
+.laptop(@params) {
+  @media (max-width: 1251px) {
+    @params();
+  }
+}
+
+.window(@params) {
+  @media (max-width: 25000px) {
+    @params();
+  }
+}
+
