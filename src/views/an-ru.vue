@@ -102,7 +102,6 @@ function mouseMove(event) {
       moveY.value = event.clientY ? event.clientY : event.touches[0].clientY - offsetY.value
       let elementHeight = interactionMenu.value.clientHeight
       let answer = elementHeight - (moveY.value - startY.value - 45)
-      interactionMenu.value.style.overflowY = `auto`
       // document.body.style.overflow = `hidden`
       interactionMenu.value.style.height = `${answer}px`
 
@@ -147,16 +146,16 @@ watch(() => interactionMenu.value,
       }
     })
 
- function testTick() {
+function testTick() {
   if (routerViewRef.value) {
-      console.log(routerViewRef.value.$el)
+    console.log(routerViewRef.value.$el)
   }
 }
 
 
 watch(() => routerViewRef.value,
     () => {
-      setTimeout(testTick,0)
+      setTimeout(testTick, 0)
     }
 )
 </script>
@@ -196,6 +195,7 @@ watch(() => routerViewRef.value,
 
 
     &-isTablet-background {
+      overflow: hidden;
       user-select: none;
       transition: opacity 0.3s ease, visibility 0.3s;
       position: absolute;
@@ -230,6 +230,7 @@ watch(() => routerViewRef.value,
     }
 
     &-isTablet-interaction-menu {
+      overflow-y: auto;
       background-color: white;
       padding: 0 40px 20px 40px;
       top: 49px !important;
