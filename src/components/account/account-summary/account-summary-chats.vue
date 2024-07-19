@@ -24,8 +24,8 @@
         <div class="account-summary-chats__currentChat-info">
           <div class="account-summary-chats__currentChat-user">
             <div class="account-summary-chats__currentChat-user-info">
-              <div class="account-summary-chats__currentChat-user-name" ref="userName"  >{{ chat.userName }}</div>
-              <div class="account-summary-chats__currentChat-user-position" v-if="width>500"   ref="userPosition" >{{
+              <div class="account-summary-chats__currentChat-user-name" ref="userName">{{ chat.userName }}</div>
+              <div class="account-summary-chats__currentChat-user-position" v-if="width>500" ref="userPosition">{{
                   chat.userPosition
                 }}
               </div>
@@ -43,9 +43,11 @@
           <div class="account-summary-chats__currentChat-house">
             <div class="account-summary-chats__currentChat-house-room">{{ chat.houseRoom }}-комн.кв.</div>
             <div class="account-summary-chats__currentChat-house-img"></div>
-            <div class="account-summary-chats__currentChat-house-prise" v-if="width>292">{{ chat.prise / 1000 }} тыс ₽</div>
-            <div class="account-summary-chats__currentChat-house-img" v-if="width > 305" ></div>
-            <div class="account-summary-chats__currentChat-house-square"  v-if="width > 353"  >{{ chat.houseSquare }} м²</div>
+            <div class="account-summary-chats__currentChat-house-prise" v-if="width>292">{{ chat.prise / 1000 }} тыс ₽
+            </div>
+            <div class="account-summary-chats__currentChat-house-img" v-if="width > 305"></div>
+            <div class="account-summary-chats__currentChat-house-square" v-if="width > 353">{{ chat.houseSquare }} м²
+            </div>
           </div>
           <div class="account-summary-chats__currentChat-anotherInfo">
             <div class="account-summary-chats__currentChat-anotherInfo-lastMessage" ref="lastMessage">
@@ -122,24 +124,25 @@ const store = useStore()
 let lastMessage = ref(null)
 let userName = ref(null)
 let userPosition = ref(null)
+
 function textLengthSlice() {
 
-  userPosition.value.forEach((element,index)=>{
-    element.textContent = chatsData.value[index].userPosition
-    while (element.clientHeight>19){
-      element.textContent = `${element.textContent.slice(0, element.textContent.length - 4)}...`
-    }
+  if (userPosition.value) {
+    userPosition.value.forEach((element, index) => {
+      element.textContent = chatsData.value[index].userPosition
+      while (element.clientHeight > 19) {
+        element.textContent = `${element.textContent.slice(0, element.textContent.length - 4)}...`
+      }
 
-  })
-
-  userName.value.forEach((element,index)=>{
+    })
+  }
+  userName.value.forEach((element, index) => {
     element.textContent = chatsData.value[index].userName
-    while (element.clientHeight>19){
+    while (element.clientHeight > 19) {
       element.textContent = `${element.textContent.slice(0, element.textContent.length - 4)}...`
     }
 
   })
-
 
 
   lastMessage.value.forEach((element, index) => {
@@ -153,10 +156,10 @@ function textLengthSlice() {
 
 watch(() => width.value,
     () => {
-        textLengthSlice()
+      textLengthSlice()
     }
 )
-onMounted(()=>textLengthSlice())
+onMounted(() => textLengthSlice())
 
 </script>
 

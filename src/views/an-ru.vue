@@ -73,6 +73,7 @@ let offsetTopMove = ref(0)
 
 function showFunc(item) {
   showBackground.value = true
+  document.body.style.overflow = 'hidden'
 }
 
 
@@ -95,11 +96,14 @@ function mouseMove(event) {
       if (interactionMenu.value.offsetTop <= 0) {
         mouseUp()
       }
+
+      event.preventDefault()
       startY.value = interactionMenu.value.offsetTop
       moveY.value = event.clientY ? event.clientY : event.touches[0].clientY - offsetY.value
       let elementHeight = interactionMenu.value.clientHeight
       let answer = elementHeight - (moveY.value - startY.value - 45)
-      backgroundRef.value.style.overflow = `hidden`
+      interactionMenu.value.style.overflowY = `auto`
+      // document.body.style.overflow = `hidden`
       interactionMenu.value.style.height = `${answer}px`
 
     }
@@ -107,8 +111,8 @@ function mouseMove(event) {
 }
 
 function mouseUp() {
-  backgroundRef.value.style.overflow = `visible`
-
+  // backgroundRef.value.style.overflow = `visible`
+  document.body.style.overflow = `visible`
   isDrawing.value = false
   if (interactionMenu.value) {
 
